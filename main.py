@@ -9,10 +9,20 @@ def add_to_calculation(symbol):
     text_result.insert(1.0, calculation)
 
 def evaluate_calculation():
-    pass
+    global calculation
+    try:
+        result = str(eval(calculation))
+        text_result.delete(1.0, "end")
+        text_result.insert(1.0, calculation)
+    except:
+        clear_field()
+        text_result.insert(1.0, "Error")
+        pass    
 
 def clear_field():
-    pass
+    global calculation
+    calculation = ""
+    text_result.delete(1.0, "end")
 
 root = tk.Tk()
 root.geometry("300x275")
